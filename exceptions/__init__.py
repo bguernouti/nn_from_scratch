@@ -1,2 +1,0 @@
-class LengthError(BaseException):
-    pass
