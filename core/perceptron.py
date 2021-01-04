@@ -5,7 +5,7 @@ class NInput(object):
     BIAS = 1 # Incredible change when adding it
     def __init__(self, values: list):
 
-        if len(values) > 2: # Unfortunately this is the limit for this perceptron :)
+        if len(values) > 2: # Unfortunately, this is the limit for this perceptron :)
             raise ValueError("A simple perceptron can accept only 2 inputs")
 
         self._values: list  = []

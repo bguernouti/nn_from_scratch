@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     """ 
     Delete train_data.json, test_data.json files or clear there content's 
-    and uncomments this two lines to generate new data. 
+    and uncomments these two lines to generate new data. 
     (compare_file=file_name) is used to prevent duplication while generating them
     """
     #Manager.random_data_writer(TRAIN_INPUTS_FILE, count=10000)
