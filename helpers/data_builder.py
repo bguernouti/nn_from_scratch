@@ -6,7 +6,13 @@ from core.perceptron import NInput
 
 class DataManager(object):
 
-    def __write(self, data: list, file: str):
+    """
+    Data manager for the perceptron. 
+    It creates training and testing datasets based on the NInput class.
+    Prevent inputs duplication, also allow to read the data after has been created.
+    """
+
+    def __write(self, data: list, file: str) -> None:
 
         _structured: list = []
 
@@ -26,7 +32,7 @@ class DataManager(object):
             json.dump(_structured, f)
             f.close()
 
-    def random_data_writer(self, _file: str, count: str, compare_file: str = None) -> None:
+    def random_data_writer(self, _file: str, count: int, compare_file: str = None) -> None:
 
         for_compare = self.data_reader(compare_file) if compare_file else None
 
@@ -54,11 +60,9 @@ class DataManager(object):
         return NInput(inpt_data)
     
     @staticmethod
-    def data_reader(_file: str):
+    def data_reader(_file: str) -> list:
 
         with open(_file, "r") as f:
             data = json.load(f)
         
         return data
-
-

@@ -8,13 +8,17 @@ if __name__ == "__main__":
 
     TRAIN_INPUTS_FILE: str = "train_data.json"
     TEST_INPUTS_FILE: str = "test_data.json"
+    
     Manager = DataManager()
+    Neuron: Perceptron = Perceptron(3, lr=0.01)
 
-    Neuron: Perceptron = Perceptron(3, 0.001)
-    fail: int = 0
-
-    #Manager.random_data_writer(TRAIN_INPUTS_FILE, 10000)
-    #Manager.random_data_writer(TEST_INPUTS_FILE, 1000, compare_file=TRAIN_INPUTS_FILE)
+    """ 
+    Delete train_data.json, test_data.json files or clear there content's 
+    and uncomments this two lines to generate new data. 
+    (compare_file=file_name) is used to prevent duplication while generating them
+    """
+    #Manager.random_data_writer(TRAIN_INPUTS_FILE, count=10000)
+    #Manager.random_data_writer(TEST_INPUTS_FILE, count=1000, compare_file=TRAIN_INPUTS_FILE)
     
     trn_inputs: list = Manager.data_reader(TRAIN_INPUTS_FILE)
     tst_inputs: list = Manager.data_reader(TEST_INPUTS_FILE)
@@ -23,19 +27,16 @@ if __name__ == "__main__":
     for train_input in trn_inputs:
         trn_data: list = train_input.get("values")
         trn_item: NInput = NInput(trn_data)
-        if not trn_item.label == train_input.get("label"):
-            raise TypeError("Huge mistake")
         
         Neuron.train(trn_item)
 
     ################################
 
+    fail: int = 0
     # Testing
     for test_input in tst_inputs:
         tst_data: list = test_input.get("values")
         tst_item: NInput = NInput(tst_data)
-        if not tst_item.label == test_input.get("label"):
-            raise TypeError("Huge mistake")
 
         # Calculating accuracy
         if not tst_item.label == Neuron.guess(tst_item):
