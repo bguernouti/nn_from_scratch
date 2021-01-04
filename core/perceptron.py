@@ -22,7 +22,7 @@ class NInput(object):
         An equation based on the two inputs data[0], data[1] (x,y).
         Since x and y are generated randomly, and the perceptron is doing a "supervised learning",
         the inputs must be "labeled, or categorized", to create a "known dataset".
-        While the input values are random float's numbers, so a mathematic equation becomes good idea
+        While the input values are random float's numbers, so a mathematic equation becomes a good idea
         for making a rule to separate them.
 
         If this rule is edited, e.g (x > y, x <= 0, 2x < y, etc ...)
